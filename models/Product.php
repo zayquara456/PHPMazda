@@ -105,7 +105,7 @@ class Product extends Model
     public function getById($id)
     {
         $obj_select = $this->connection
-            ->prepare("SELECT * FROM `sanpham` WHERE sanpham.MaSP = $id");
+            ->prepare("SELECT * FROM `sanpham` WHERE `MaSP` = $id");
 
         $obj_select->execute();
         return $obj_select->fetch(PDO::FETCH_ASSOC);
@@ -115,8 +115,8 @@ class Product extends Model
     public function update($id)
     {
         $obj_update = $this->connection
-            ->prepare("UPDATE products SET  tensp=:tensp, hang=:hang, mau=:mau,soghe=:soghe,
-            giatien=:giatien, soluong=:soluong WHERE MaSP = $id
+            ->prepare("UPDATE `sanpham` SET `TenSP`=:tensp,`Hang`=:hang,`MauHienCo`=:mau,`SoGhe`=:soghe,`GiaTien`=:giatien,
+			`SoLuong`=:soluong WHERE MaSP = $id
 ");
         $arr_update = [
             ':tensp' => $this->tensp,

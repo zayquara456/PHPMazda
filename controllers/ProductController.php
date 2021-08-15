@@ -1,6 +1,7 @@
 <?php
 require_once 'controllers/Controller.php';
 require_once 'models/Product.php';
+require_once 'models/hoadon.php';
 require_once 'models/Pagination.php';
 
 class ProductController extends Controller
@@ -76,7 +77,7 @@ class ProductController extends Controller
     }
 
     //lấy danh sách category đang có trên hệ thống để phục vụ cho search
-    $category_model = new Category();
+    $category_model = new Bill();
     $categories = $category_model->getAll();
 
     $this->content = $this->render('views/products/create.php', [
@@ -111,69 +112,32 @@ class ProductController extends Controller
       exit();
     }
 
-    $id = $_GET['id'];
+	$id = $_GET['id'];
     $product_model = new Product();
     $product = $product_model->getById($id);
     //xử lý submit form
     if (isset($_POST['submit'])) {
-      $category_id = $_POST['category_id'];
-      $title = $_POST['title'];
-      $price = $_POST['price'];
-      $amount = $_POST['amount'];
-      $summary = $_POST['summary'];
-      $content = $_POST['content'];
-      $seo_title = $_POST['seo_title'];
-      $seo_description= $_POST['seo_description'];
-      $seo_keywords = $_POST['seo_keywords'];
-      $status = $_POST['status'];
+      $tensp = $_POST['tensp'];
+      $hang = $_POST['hang'];
+      $mauhienco = $_POST['mauhienco'];
+      $soghe = $_POST['soghe'];
+      $giatien = $_POST['giatien'];
+      $soluong = $_POST['soluong'];
       //xử lý validate
-      if (empty($title)) {
-        $this->error = 'Không được để trống title';
-      } else if ($_FILES['avatar']['error'] == 0) {
-        //validate khi có file upload lên thì bắt buộc phải là ảnh và dung lượng không quá 2 Mb
-        $extension = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-        $extension = strtolower($extension);
-        $arr_extension = ['jpg', 'jpeg', 'png', 'gif'];
-
-        $file_size_mb = $_FILES['avatar']['size'] / 1024 / 1024;
-        //làm tròn theo đơn vị thập phân
-        $file_size_mb = round($file_size_mb, 2);
-
-        if (!in_array($extension, $arr_extension)) {
-          $this->error = 'Cần upload file định dạng ảnh';
-        } else if ($file_size_mb > 2) {
-          $this->error = 'File upload không được quá 2MB';
-        }
+      if (empty($tensp)) {
+        $this->error = 'Không được để trống tên sản phẩm';
       }
 
       //nếu ko có lỗi thì tiến hành save dữ liệu
       if (empty($this->error)) {
-        $filename = $product['avatar'];
-        //xử lý upload file nếu có
-        if ($_FILES['avatar']['error'] == 0) {
-          $dir_uploads = __DIR__ . '/../assets/uploads';
-          //xóa file cũ, thêm @ vào trước hàm unlink để tránh báo lỗi khi xóa file ko tồn tại
-          @unlink($dir_uploads . '/' . $filename);
-          if (!file_exists($dir_uploads)) {
-            mkdir($dir_uploads);
-          }
-          //tạo tên file theo 1 chuỗi ngẫu nhiên để tránh upload file trùng lặp
-          $filename = time() . '-product-' . $_FILES['avatar']['name'];
-          move_uploaded_file($_FILES['avatar']['tmp_name'], $dir_uploads . '/' . $filename);
-        }
+
         //save dữ liệu vào bảng products
-        $product_model->category_id = $category_id;
-        $product_model->title = $title;
-        $product_model->avatar = $filename;
-        $product_model->price = $price;
-        $product_model->amount = $amount;
-        $product_model->summary = $summary;
-        $product_model->content = $content;
-        $product_model->seo_title = $seo_title;
-        $product_model->seo_description = $seo_description;
-        $product_model->seo_keywords = $seo_keywords;
-        $product_model->status = $status;
-        $product_model->updated_at = date('Y-m-d H:i:s');
+        $product_model->tensp = $tensp;
+        $product_model->hang = $hang;
+        $product_model->mauhienco = $mauhienco;
+        $product_model->soghe = $soghe;
+        $product_model->giatien = $giatien;
+        $product_model->soluong = $soluong;
 
         $is_update = $product_model->update($id);
         if ($is_update) {
@@ -186,12 +150,7 @@ class ProductController extends Controller
       }
     }
 
-    //lấy danh sách category đang có trên hệ thống để phục vụ cho search
-    $category_model = new Category();
-    $categories = $category_model->getAll();
-
     $this->content = $this->render('views/products/update.php', [
-        'categories' => $categories,
         'product' => $product,
     ]);
     require_once 'views/layouts/main.php';
