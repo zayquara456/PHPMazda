@@ -121,7 +121,7 @@ class Product extends Model
         $arr_update = [
             ':tensp' => $this->tensp,
             ':hang' => $this->hang,
-            ':mau' => $this->mau,
+            ':mau' => $this->mauhienco,
             ':soghe' => $this->soghe,
             ':giatien' => $this->giatien,
             ':soluong' => $this->soluong,

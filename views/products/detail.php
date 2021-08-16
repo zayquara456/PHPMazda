@@ -14,7 +14,10 @@ require_once 'helpers/Helper.php';
         <th>Hãng</th>
         <td><?php echo $product['Hang']?></td>
     </tr>
- 
+  <tr>
+        <th>Màu hiện có</th>
+        <td><?php echo $product['MauHienCo']?></td>
+    </tr>
     <tr>
         <th>Số ghế</th>
         <td><?php echo $product['SoGhe'] ?></td>
