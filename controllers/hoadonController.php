@@ -24,10 +24,6 @@ class HoadonController extends Controller
     if (isset($_GET['page'])) {
       $page = $_GET['page'];
     }
-    //xử lý form tìm kiếm
-    if (isset($_GET['name'])) {
-      $params['query_additional'] = '&name=' . $_GET['name'];
-    }
 
     //lấy tổng số bản ghi dựa theo các điều kiện có được từ mảng params truyền vào
     $count_total = $category_model->countTotal();

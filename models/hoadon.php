@@ -10,7 +10,16 @@ class Bill extends Model {
   public $tenkhachhang;
   public $masp;
   public $soluongmua;
+	public $str_search;
 
+    public function __construct() {
+        parent::__construct();
+        if (isset($_GET['name']) && !empty($_GET['name'])) {
+            $name = addslashes($_GET['name']);
+            $this->str_search .= " AND hoadon.NhanVien LIKE '%$name%'";
+        }
+    }
+	
   //insert dữ liệu vào bảng categories
   public function insert() {
     $sql_insert =
@@ -41,18 +50,11 @@ VALUES (:time, :nhanvien,  :tenkhachhang, :masp , :soluongmua);
     // echo "<pre>";
     // print_r($params);
     // echo "</pre>";
-    //tạo 1 chuỗi truy vấn để thêm các điều kiện search
     //dựa vào mảng params truyền vào
-    $str_search = 'WHERE TRUE';
-    //check mảng param truyền vào để thay đổi lại chuỗi search
-    if (isset($params['name']) && !empty($params['name'])) {
-      $name = $params['name'];
-      //nhớ phải có dấu cách ở đầu chuỗi
-      $str_search .= " AND `NhanVien` LIKE '%$name%'";
-    }
+    
     //tạo câu truy vấn
     //gắn chuỗi search nếu có vào truy vấn ban đầu
-    $sql_select_all = "SELECT * FROM hoadon $str_search";
+    $sql_select_all = "SELECT * FROM hoadon";
     //cbi đối tượng truy vấn
     $obj_select_all = $this->connection
       ->prepare($sql_select_all);
@@ -97,7 +99,7 @@ WHERE MaHD = $id");
    */
   public function countTotal()
   {
-    $obj_select = $this->connection->prepare("SELECT COUNT(MaHD) FROM hoadon");
+    $obj_select = $this->connection->prepare("SELECT COUNT(MaHD) FROM hoadon WHERE TRUE $this->str_search");
     $obj_select->execute();
 
     return $obj_select->fetchColumn();
@@ -109,7 +111,8 @@ WHERE MaHD = $id");
     $page = $params['page'];
     $start = ($page - 1) * $limit;
     $obj_select = $this->connection
-      ->prepare("SELECT * FROM hoadon LIMIT $start, $limit");
+      ->prepare("SELECT * FROM hoadon WHERE TRUE $this->str_search
+	  LIMIT $start, $limit");
 
 //    do PDO coi tất cả các param luôn là 1 string, nên cần sử dụng bindValue / bindParam cho các tham số start và limit
 //        $obj_select->bindParam(':limit', $limit, PDO::PARAM_INT);
