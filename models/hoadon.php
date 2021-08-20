@@ -15,7 +15,9 @@ class Bill extends Model {
   public function insert() {
     $sql_insert =
       "INSERT INTO `hoadon`( `NgayGioTao`, `NhanVien`, `TenKhachHang`, `MaSP`, `SoLuongMua`) 
-VALUES (:time, :nhanvien,  :tenkhachhang, :masp , :soluongmua)";
+VALUES (:time, :nhanvien,  :tenkhachhang, :masp , :soluongmua);
+		UPDATE `sanpham` SET `SoLuong`=`SoLuong`- :soluongmua WHERE `MaSP`=:masp
+";
     //cbi đối tượng truy vấn
     $obj_insert = $this->connection
       ->prepare($sql_insert);
