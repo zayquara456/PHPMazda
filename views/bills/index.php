@@ -1,6 +1,6 @@
 <h1>Tìm kiếm</h1>
 <form action="" method="get">
-    <input type="hidden" name="controller" value="category"/>
+    <input type="hidden" name="controller" value="hoadon"/>
     <input type="hidden" name="action" value="index"/>
     <div class="form-group">
         <label>Nhập tên nhân viên</label>

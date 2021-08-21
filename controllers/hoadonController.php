@@ -53,7 +53,7 @@ class HoadonController extends Controller
   {
     if (isset($_POST['submit'])) {
       $nhanvien = $_POST['nhanvien'];
-      $time = $_POST['time'];
+      $time = date('d/m/Y H:i:s');
       $tenkhachhang = $_POST['tenkhachhang'];
 	   $masp = $_POST['masp'];
       $soluongmua = $_POST['soluongmua'];
