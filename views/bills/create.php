@@ -1,9 +1,13 @@
 <h2>Thêm mới hóa đơn</h2>
 <form method="post" action="" enctype="multipart/form-data">
-  <label>Ngày giờ hiện tại: </label> <?php echo date('d/m/Y H:i:s'); ?>
     <div class="form-group">
         <label>Nhân viên</label>
         <input type="text" name="nhanvien" value="<?php echo isset($_POST['nhanvien']) ? $_POST['nhanvien'] : ''; ?>"
+               class="form-control"/>
+    </div>
+	 <div class="form-group">
+        <label>Ngày viết hóa đơn: </label>
+        <input type="text" name="time" value="<?php echo isset($_POST['time']) ? $_POST['time'] : 'yyyy/mm/dd'; ?>"
                class="form-control"/>
     </div>
  <div class="form-group">
