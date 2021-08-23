@@ -7,7 +7,7 @@
     </div>
 	 <div class="form-group">
         <label>Ngày viết hóa đơn: </label>
-        <input type="text" name="time" value="<?php echo isset($_POST['time']) ? $_POST['time'] : 'yyyy/mm/dd'; ?>"
+        <input type="date" name="time" value="<?php echo isset($_POST['time']) ? $_POST['time'] : ''; ?>"
                class="form-control"/>
     </div>
  <div class="form-group">
