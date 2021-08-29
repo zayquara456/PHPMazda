@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2021 at 10:30 AM
+-- Generation Time: Aug 29, 2021 at 04:34 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_cc`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doanhthu`
+--
+
+CREATE TABLE `doanhthu` (
+  `madt` int(11) NOT NULL,
+  `ngay` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `doanhthu`
+--
+
+INSERT INTO `doanhthu` (`madt`, `ngay`) VALUES
+(1, '2021-08-22');
 
 -- --------------------------------------------------------
 
@@ -46,6 +64,29 @@ INSERT INTO `hoadon` (`MaHD`, `NgayGioTao`, `NhanVien`, `TenKhachHang`, `MaSP`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `khachhang`
+--
+
+CREATE TABLE `khachhang` (
+  `makh` int(11) NOT NULL,
+  `tenkh` varchar(500) NOT NULL,
+  `diachi` varchar(500) NOT NULL,
+  `sdt` varchar(500) NOT NULL,
+  `sinhnhat` varchar(500) NOT NULL,
+  `sothich` varchar(500) NOT NULL,
+  `ngaythem` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `khachhang`
+--
+
+INSERT INTO `khachhang` (`makh`, `tenkh`, `diachi`, `sdt`, `sinhnhat`, `sothich`, `ngaythem`) VALUES
+(1, 'Nguyễn Văn A', 'Hà Nội', '0386255531', '12/6/1990', 'Cá hát, hội họa', '2021-08-29');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sanpham`
 --
 
@@ -64,7 +105,7 @@ CREATE TABLE `sanpham` (
 --
 
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`, `SoLuong`) VALUES
-(1, 'MAZDA6', 'Mazda', 'Deep Blue', 4, 899000000, 58),
+(1, 'MAZDA6', 'Mazda', 'Deep Blue', 4, 899000000, 65),
 (2, 'MAZDA CX-8', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 4, 999000000, 5),
 (3, 'ALL-NEW MAZDA3 SPORT', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 2, 699000000, 12);
 
@@ -104,10 +145,22 @@ INSERT INTO `users` (`id`, `username`, `password`, `first_name`, `last_name`, `p
 --
 
 --
+-- Indexes for table `doanhthu`
+--
+ALTER TABLE `doanhthu`
+  ADD PRIMARY KEY (`madt`);
+
+--
 -- Indexes for table `hoadon`
 --
 ALTER TABLE `hoadon`
   ADD PRIMARY KEY (`MaHD`);
+
+--
+-- Indexes for table `khachhang`
+--
+ALTER TABLE `khachhang`
+  ADD PRIMARY KEY (`makh`);
 
 --
 -- Indexes for table `sanpham`
@@ -126,10 +179,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `doanhthu`
+--
+ALTER TABLE `doanhthu`
+  MODIFY `madt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `hoadon`
 --
 ALTER TABLE `hoadon`
   MODIFY `MaHD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `khachhang`
+--
+ALTER TABLE `khachhang`
+  MODIFY `makh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sanpham`

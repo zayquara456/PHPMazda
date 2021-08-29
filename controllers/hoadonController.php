@@ -2,6 +2,7 @@
 require_once 'controllers/Controller.php';
 require_once 'models/hoadon.php';
 require_once 'models/Pagination.php';
+require_once 'models/Product.php';
 
 class HoadonController extends Controller
 {
@@ -57,7 +58,12 @@ class HoadonController extends Controller
       $tenkhachhang = $_POST['tenkhachhang'];
 	   $masp = $_POST['masp'];
       $soluongmua = $_POST['soluongmua'];
-
+	 $product_model = new Product();
+    $product = $product_model->getById($masp);
+	if($product['SoLuong'] < $soluongmua)
+	{
+		 $this->error = 'Không đủ mặt hàng cung cấp, số lượng hiện tại chỉ còn '.$product['SoLuong'].' chiếc';
+	}
       //check validate
       if (empty($nhanvien)) {
         $this->error = 'Cần nhập tên';

@@ -95,6 +95,22 @@ if (isset($_SESSION['user'])) {
             </span>
                 </a>
             </li>
+			<li>
+                <a href="index.php?controller=khachhang&action=index">
+                    <i class="fa fa-users"></i> <span>Quản lý khách hàng</span>
+                    <span class="pull-right-container">
+              <!--<small class="label pull-right bg-green">new</small>-->
+            </span>
+                </a>
+            </li>
+			<li>
+                <a href="index.php?controller=doanhthu&action=index">
+                    <i class="fa fa-university"></i> <span>Quản lý báo cáo doanh thu</span>
+                    <span class="pull-right-container">
+              <!--<small class="label pull-right bg-green">new</small>-->
+            </span>
+                </a>
+            </li>
             <li>
                 <a href="index.php?controller=user&action=index">
                     <i class="fa fa-user"></i> <span>Quản lý user</span>
