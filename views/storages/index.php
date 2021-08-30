@@ -39,7 +39,7 @@ require_once 'helpers/Helper.php';
         <td></td>
         <td></td>
         <td></td>
-        <td><b>Tổng vốn: <?php echo $tongvon['TongVon']; ?> &nbsp; VNĐ</b></td>
+        <td><b>Tổng vốn: <?php echo number_format($tongvon['TongVon']) ; ?> &nbsp; VNĐ</b></td>
     </tr>
 </table>
 <?php echo $pages; ?>
