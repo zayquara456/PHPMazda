@@ -30,11 +30,12 @@ class HangTonController extends Controller
     $pagination = new Pagination($arr_params);
 
     $pages = $pagination->getPagination();
-
+    $tongvon = $product_model->getTongVon();
 
     $this->content = $this->render('views/storages/index.php', [
         'storages' => $storages,
         'pages' => $pages,
+        'tongvon' => $tongvon,
     ]);
     require_once 'views/layouts/main.php';
   }
