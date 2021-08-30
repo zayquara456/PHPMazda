@@ -91,5 +91,22 @@ class Storage extends Model
         $obj_select->execute();
         return $obj_select->fetch(PDO::FETCH_ASSOC);
     }
+    /**
+     * Lấy thông tin tổng vốn kho hàng
+     * @param $vontonkho
+     * @return mixed
+     */
+    public function getTongVon()
+    {
+        $obj_select = $this->connection
+            ->prepare("SELECT SUM(c.GiaTienNhap*c.SoLuongNhap) as TongVon 
+            FROM hangton h, chitieu c, sanpham s 
+            WHERE h.MaSP = c.MaSP and h.MaSP = s.MaSP
+            ");
+
+        $obj_select->execute();
+        return $obj_select->fetch(PDO::FETCH_ASSOC);
+
+    }
 
 }

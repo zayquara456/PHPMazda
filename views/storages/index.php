@@ -35,5 +35,11 @@ require_once 'helpers/Helper.php';
             <td colspan="9">No data found</td>
         </tr>
     <?php endif; ?>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b>Tổng vốn: <?php echo $tongvon['TongVon']; ?> &nbsp; VNĐ</b></td>
+    </tr>
 </table>
 <?php echo $pages; ?>
