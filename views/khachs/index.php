@@ -1,6 +1,6 @@
 
 <h1>Danh sách khách hàng</h1> <br>
-<a href="index.php?controller=khachhang&action=create" class="btn btn-info">
+<a href="index.php?controller=khachhang&action=create" class="btn btn-success">
   <b>  <i class="fa fa-plus"></i> Thêm mới </b>
 </a>
 <table class="table table-hover" style="font-size: 15px; margin-top:10px;">

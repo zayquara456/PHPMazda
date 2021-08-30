@@ -1,4 +1,3 @@
-<h1>Tìm kiếm</h1>
 <form action="" method="get">
     <input type="hidden" name="controller" value="hoadon"/>
     <input type="hidden" name="action" value="index"/>
@@ -8,13 +7,13 @@
                class="form-control"/>
     </div>
     <div class="form-group">
-        <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-success"/>
+        <input type="submit" name="submit" value="Tìm kiếm" class="btn btn-primary"/>
         <a href="index.php?controller=hoadon" class="btn btn-secondary">Xóa filter</a>
     </div>
 </form>
 
 <h1>Danh sách hóa đơn</h1>
-<a href="index.php?controller=hoadon&action=create" class="btn btn-primary">
+<a href="index.php?controller=hoadon&action=create" class="btn btn-success">
     <i class="fa fa-plus"></i> Thêm mới
 </a>
 <table class="table table-bordered">
