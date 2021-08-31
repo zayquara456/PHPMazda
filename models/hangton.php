@@ -44,9 +44,9 @@ class Storage extends Model
         $page = $arr_params['page'];
         $start = ($page - 1) * $limit;
         $obj_select = $this->connection
-            ->prepare("SELECT h.*,
+            ->prepare("SELECT h.MaHT, 
             s.TenSP,
-            SUM(c.SoLuongNhap) AS SoLuongTon,
+            h.SoLuongTon,
             SUM(c.GiaTienNhap*c.SoLuongNhap) AS VonTonKho
             FROM 
             hangton h,
@@ -64,15 +64,15 @@ class Storage extends Model
     }
     public function insert() {
         $sql_insert =
-          "INSERT INTO `hangton`( `MaSP`)
-            VALUES (:masp)";
+          "INSERT INTO `hangton`(`MaSP`,`SoLuongTon`)
+            VALUES (:masp, :soluongton)";
         //cbi đối tượng truy vấn
         $obj_insert = $this->connection
           ->prepare($sql_insert);
         //gán giá trị thật cho các placeholder
         $arr_insert = [
           ':masp' => $this->masp,
-          
+          ':soluongton' => $this->soluongton,
         ];
         return $obj_insert->execute($arr_insert);
       
@@ -108,5 +108,27 @@ class Storage extends Model
         return $obj_select->fetch(PDO::FETCH_ASSOC);
 
     }
+    // /**
+    //  * Lấy so luong ton
+    //  * @param 
+    //  * @return mixed
+    //  */
+    // public function getSoLuongCon()
+    // {
+    //     $obj_select = $this->connection
+    //         ->prepare("SELECT 
+    //         SUM(c.SoLuongNhap) 
+    //         FROM 
+    //         hangton h,
+    //         chitieu c,
+    //         sanpham s
+    //         WHERE h.MaSP = c.MaSP and h.MaSP = s.MaSP
+    //         GROUP BY h.MaSP
+    //         ");
+
+    //     $obj_select->execute();
+    //     return $obj_select->fetch(PDO::FETCH_ASSOC);
+
+    // }
 
 }

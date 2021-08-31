@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th8 31, 2021 lúc 02:48 AM
+-- Thời gian đã tạo: Th8 31, 2021 lúc 04:58 AM
 -- Phiên bản máy phục vụ: 5.7.31
 -- Phiên bản PHP: 7.3.21
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `chitieu` (
   `SoLuongNhap` int(11) NOT NULL,
   `NguoiNhap` varchar(50) CHARACTER SET utf8mb4 NOT NULL,
   PRIMARY KEY (`MaCT`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `chitieu`
@@ -111,6 +111,7 @@ DROP TABLE IF EXISTS `hangton`;
 CREATE TABLE IF NOT EXISTS `hangton` (
   `MaHT` int(11) NOT NULL AUTO_INCREMENT,
   `MaSP` int(11) NOT NULL,
+  `SoLuongTon` int(11) NOT NULL,
   PRIMARY KEY (`MaHT`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
@@ -118,10 +119,10 @@ CREATE TABLE IF NOT EXISTS `hangton` (
 -- Đang đổ dữ liệu cho bảng `hangton`
 --
 
-INSERT INTO `hangton` (`MaHT`, `MaSP`) VALUES
-(1, 1),
-(2, 2),
-(3, 3);
+INSERT INTO `hangton` (`MaHT`, `MaSP`, `SoLuongTon`) VALUES
+(1, 1, 20),
+(2, 2, 30),
+(3, 3, 30);
 
 -- --------------------------------------------------------
 
@@ -329,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `sanpham` (
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`, `SoLuong`) VALUES
 (1, 'MAZDA6', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 4, 899000000, 46),
 (2, 'MAZDA CX-8', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 4, 999000000, 114),
-(3, 'ALL-NEW MAZDA3 SPORT', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 2, 699000000, 80);
+(3, 'ALL-NEW MAZDA3 SPORT', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 2, 699000000, 81);
 
 -- --------------------------------------------------------
 
