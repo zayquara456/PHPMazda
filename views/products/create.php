@@ -25,14 +25,6 @@
         <label for="giatien">Giá tiền</label>
         <input type="number" name="giatien" value="<?php echo isset($_POST['giatien']) ? $_POST['giatien'] : '' ?>"
                class="form-control" id="amount"/>
-    </div>
-	 <div class="form-group">
-        <label for="soluong">Số lượng còn lại</label>
-        <input type="number" name="soluong" value="<?php echo isset($_POST['soluong']) ? $_POST['soluong'] : '' ?>"
-               class="form-control" id="amount"/>
-    </div>
-  
-
     <div class="form-group">
         <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
         <a href="index.php?controller=product&action=index" class="btn btn-default">Back</a>

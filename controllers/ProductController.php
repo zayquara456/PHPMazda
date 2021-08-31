@@ -49,7 +49,6 @@ class ProductController extends Controller
       $mauhienco = $_POST['mauhienco'];
       $soghe = $_POST['soghe'];
       $giatien = $_POST['giatien'];
-      $soluong = $_POST['soluong'];
       //xử lý validate
 
 
@@ -64,7 +63,6 @@ class ProductController extends Controller
         $product_model->mauhienco = $mauhienco;
         $product_model->soghe = $soghe;
         $product_model->giatien = $giatien;
-        $product_model->soluong = $soluong;
         $is_insert = $product_model->insert();
         if ($is_insert) {
           $_SESSION['success'] = 'Insert dữ liệu thành công';
@@ -122,7 +120,6 @@ class ProductController extends Controller
       $mauhienco = $_POST['mauhienco'];
       $soghe = $_POST['soghe'];
       $giatien = $_POST['giatien'];
-      $soluong = $_POST['soluong'];
       //xử lý validate
       if (empty($tensp)) {
         $this->error = 'Không được để trống tên sản phẩm';
@@ -137,7 +134,6 @@ class ProductController extends Controller
         $product_model->mauhienco = $mauhienco;
         $product_model->soghe = $soghe;
         $product_model->giatien = $giatien;
-        $product_model->soluong = $soluong;
 
         $is_update = $product_model->update($id);
         if ($is_update) {

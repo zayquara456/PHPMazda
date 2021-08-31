@@ -10,7 +10,6 @@ class Product extends Model
 	public $mau;
 	public $soghe;
     public $gia;
-    public $soluong;
     /*
      * Chuỗi search, sinh tự động dựa vào tham số GET trên Url
      */
@@ -53,7 +52,7 @@ class Product extends Model
         $page = $arr_params['page'];
         $start = ($page - 1) * $limit;
         $obj_select = $this->connection
-            ->prepare("SELECT sanpham.* FROM sanpham 
+            ->prepare("	select  c.*, r.SoLuongTon SoLuong from sanpham c inner join hangton r on r.MaSP = c.MaSP
                         WHERE TRUE $this->str_search
                         LIMIT $start, $limit
                         ");
@@ -84,15 +83,14 @@ class Product extends Model
     public function insert()
     {
         $obj_insert = $this->connection
-            ->prepare("INSERT INTO `sanpham`( `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`, `SoLuong`) 
-                                VALUES (:tensp, :hang, :mau, :soghe, :giatien, :soluong)");
+            ->prepare("INSERT INTO `sanpham`( `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`) 
+                                VALUES (:tensp, :hang, :mau, :soghe, :giatien)");
         $arr_insert = [
             ':tensp' => $this->tensp,
             ':hang' => $this->hang,
             ':mau' => $this->mauhienco,
             ':soghe' => $this->soghe,
             ':giatien' => $this->giatien,
-            ':soluong' => $this->soluong,
         ];
         return $obj_insert->execute($arr_insert);
     }
@@ -105,7 +103,7 @@ class Product extends Model
     public function getById($id)
     {
         $obj_select = $this->connection
-            ->prepare("SELECT * FROM `sanpham` WHERE `MaSP` = $id");
+            ->prepare("SELECT c.*, r.SoLuongTon SoLuong FROM `sanpham` c inner join `hangton` r on r.MaSP = c.MaSP WHERE c.MaSP = $id");
 
         $obj_select->execute();
         return $obj_select->fetch(PDO::FETCH_ASSOC);
@@ -115,8 +113,7 @@ class Product extends Model
     public function update($id)
     {
         $obj_update = $this->connection
-            ->prepare("UPDATE `sanpham` SET `TenSP`=:tensp,`Hang`=:hang,`MauHienCo`=:mau,`SoGhe`=:soghe,`GiaTien`=:giatien,
-			`SoLuong`=:soluong WHERE MaSP = $id
+            ->prepare("UPDATE `sanpham` SET `TenSP`=:tensp,`Hang`=:hang,`MauHienCo`=:mau,`SoGhe`=:soghe,`GiaTien`=:giatien WHERE MaSP = $id
 ");
         $arr_update = [
             ':tensp' => $this->tensp,
@@ -124,7 +121,6 @@ class Product extends Model
             ':mau' => $this->mauhienco,
             ':soghe' => $this->soghe,
             ':giatien' => $this->giatien,
-            ':soluong' => $this->soluong,
         ];
         return $obj_update->execute($arr_update);
     }

@@ -31,12 +31,6 @@
                value="<?php echo isset($_POST['GiaTien']) ? $_POST['GiaTien'] : $product['GiaTien'] ?>"
                class="form-control" id="title"/>
     </div>
-  <div class="form-group">
-       <label for="soluong">Số lượng còn lại</label>
-        <input type="number" name="soluong"
-               value="<?php echo isset($_POST['SoLuong']) ? $_POST['SoLuong'] : $product['SoLuong'] ?>"
-               class="form-control" id="title"/>
-    </div>
     <div class="form-group">
         <input type="submit" name="submit" value="Save" class="btn btn-primary"/>
         <a href="index.php?controller=product&action=index" class="btn btn-default">Back</a>
