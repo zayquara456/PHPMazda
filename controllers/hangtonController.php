@@ -44,11 +44,11 @@ class HangTonController extends Controller
   {
     if (isset($_POST['submit'])) {
       $masp= $_POST['masp'];
-
+      $soluongton= $_POST['soluongton'];
       if (empty($this->error)) {
         $storage_model = new Storage();
         $storage_model->masp = $masp;
-      
+        $storage_model->soluongton = $soluongton;
         $is_insert = $storage_model->insert();
         if ($is_insert) {
           $_SESSION['success'] = 'Thêm mới thành công';
