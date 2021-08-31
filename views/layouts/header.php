@@ -112,6 +112,22 @@ if (isset($_SESSION['user'])) {
                 </a>
             </li>
             <li>
+                <a href="index.php?controller=hangton&action=index">
+                    <i class="fas fa-box"></i> <span>&nbsp; Quản lý hàng tồn</span>
+                    <span class="pull-right-container">
+              <!--<small class="label pull-right bg-green">new</small>-->
+            </span>
+                </a>
+            </li>
+            <li>
+                <a href="index.php?controller=chitieu&action=index">
+                    <i class="fa fa-hand-holding-usd"></i> <span>Quản lý chi tiêu</span>
+                    <span class="pull-right-container">
+              <!--<small class="label pull-right bg-green">new</small>-->
+            </span>
+                </a>
+            </li>
+            <li>
                 <a href="index.php?controller=user&action=index">
                     <i class="fa fa-user"></i> <span>Quản lý user</span>
                     <span class="pull-right-container">

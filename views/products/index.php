@@ -4,7 +4,7 @@ require_once 'helpers/Helper.php';
 <!--form search-->
 <form action="" method="GET">
     <div class="form-group">
-        <label for="title">Nhập title</label>
+        <label for="title">Nhập tên sản phẩm</label>
         <input type="text" name="title" value="<?php echo isset($_GET['title']) ? $_GET['title'] : '' ?>" id="title"
                class="form-control"/>
     </div>
@@ -15,7 +15,7 @@ require_once 'helpers/Helper.php';
 </form>
 
 
-<h2>Danh sách sản phẩm</h2>
+<h1>Danh sách sản phẩm</h2>
     <a href="index.php?controller=product&action=create" class="btn btn-success">
         <i class="fa fa-plus"></i> Thêm mới
     </a>

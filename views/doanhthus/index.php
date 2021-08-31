@@ -1,6 +1,6 @@
 
 <h1>Danh sách báo cáo doanh thu</h1>
-<a href="index.php?controller=doanhthu&action=create" class="btn btn-info">
+<a href="index.php?controller=doanhthu&action=create" class="btn btn-success">
 <b>  <i class="fa fa-plus"></i> Thêm mới </b>
 </a>
 <table class="table table-hover" style="font-size: 15px; margin-top:10px;">
