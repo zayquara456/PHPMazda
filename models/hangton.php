@@ -47,7 +47,7 @@ class Storage extends Model
             ->prepare("SELECT h.MaHT, 
             s.TenSP,
             h.SoLuongTon,
-            SUM(c.GiaTienNhap*c.SoLuongNhap) AS VonTonKho
+            (c.GiaTienNhap*c.SoLuongNhap) AS VonTonKho
             FROM 
             hangton h,
             chitieu c,

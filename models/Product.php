@@ -81,10 +81,11 @@ class Product extends Model
     public function insert()
     {
         $obj_insert = $this->connection
-            ->prepare("INSERT INTO `sanpham`( `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`) 
-                                VALUES (:tensp, :hang, :mau, :soghe, :giatien);
-						INSERT INTO `hangton`(`MaSP`, `SoLuongTon`) VALUES ((SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES
-     WHERE TABLE_SCHEMA = 'project_cc' AND TABLE_NAME = 'sanpham'),'0')");
+            ->prepare("INSERT INTO `hangton`(`MaSP`, `SoLuongTon`) VALUES ((SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES
+     WHERE TABLE_SCHEMA = 'project_cc' AND TABLE_NAME = 'sanpham'),'0');
+			INSERT INTO `sanpham`( `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`) 
+             VALUES (:tensp, :hang, :mau, :soghe, :giatien);
+						");
         $arr_insert = [
             ':tensp' => $this->tensp,
             ':hang' => $this->hang,

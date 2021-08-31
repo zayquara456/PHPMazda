@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2021 at 03:05 PM
+-- Generation Time: Aug 31, 2021 at 05:48 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -45,7 +45,7 @@ INSERT INTO `chitieu` (`MaCT`, `MaSP`, `GiaTienNhap`, `SoLuongNhap`, `NguoiNhap`
 (3, 2, 7000000000, 20, 'Quyen'),
 (4, 2, 7100000000, 10, 'Quy'),
 (5, 3, 8000000000, 30, 'Quyen'),
-(6, 4, 400000000, 10, 'Quân');
+(6, 4, 500000000, 10, 'Quân');
 
 -- --------------------------------------------------------
 
@@ -85,7 +85,7 @@ INSERT INTO `hangton` (`MaHT`, `MaSP`, `SoLuongTon`) VALUES
 (1, 1, 20),
 (2, 2, 30),
 (3, 3, 30),
-(4, 5, 10);
+(4, 4, 10);
 
 -- --------------------------------------------------------
 
@@ -157,7 +157,7 @@ INSERT INTO `sanpham` (`MaSP`, `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`)
 (1, 'MAZDA6', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 4, 899000000),
 (2, 'MAZDA CX-8', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 4, 999000000),
 (3, 'ALL-NEW MAZDA3 SPORT', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 2, 699000000),
-(4, 'Mazda 3 Sport Premium 2021', 'Mazda ', 'Ghi xám', 4, 799000000);
+(4, 'Mazda 3 Sport', 'Mazda', 'Ghi xám', 4, 799000000);
 
 -- --------------------------------------------------------
 
