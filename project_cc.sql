@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 31, 2021 at 10:03 AM
+-- Generation Time: Aug 31, 2021 at 03:05 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.19
 
@@ -44,7 +44,8 @@ INSERT INTO `chitieu` (`MaCT`, `MaSP`, `GiaTienNhap`, `SoLuongNhap`, `NguoiNhap`
 (2, 1, 6800000000, 5, 'Quy'),
 (3, 2, 7000000000, 20, 'Quyen'),
 (4, 2, 7100000000, 10, 'Quy'),
-(5, 3, 8000000000, 30, 'Quyen');
+(5, 3, 8000000000, 30, 'Quyen'),
+(6, 4, 400000000, 10, 'Quân');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,8 @@ CREATE TABLE `hangton` (
 INSERT INTO `hangton` (`MaHT`, `MaSP`, `SoLuongTon`) VALUES
 (1, 1, 20),
 (2, 2, 30),
-(3, 3, 30);
+(3, 3, 30),
+(4, 5, 10);
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,7 @@ INSERT INTO `hangton` (`MaHT`, `MaSP`, `SoLuongTon`) VALUES
 
 CREATE TABLE `hoadon` (
   `MaHD` int(11) NOT NULL,
-  `NgayGioTao` varchar(50) NOT NULL,
+  `NgayGioTao` date NOT NULL,
   `NhanVien` varchar(50) NOT NULL,
   `TenKhachHang` varchar(50) NOT NULL,
   `MaSP` int(11) NOT NULL,
@@ -105,7 +107,7 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`MaHD`, `NgayGioTao`, `NhanVien`, `TenKhachHang`, `MaSP`, `SoLuongMua`) VALUES
-(1, '13/8/2021 - 9:21', 'Tiến', 'Nguyễn Ngọc Quân', 1, 2);
+(1, '0000-00-00', 'Tiến', 'Nguyễn Ngọc Quân', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -154,7 +156,8 @@ CREATE TABLE `sanpham` (
 INSERT INTO `sanpham` (`MaSP`, `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`) VALUES
 (1, 'MAZDA6', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 4, 899000000),
 (2, 'MAZDA CX-8', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 4, 999000000),
-(3, 'ALL-NEW MAZDA3 SPORT', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 2, 699000000);
+(3, 'ALL-NEW MAZDA3 SPORT', 'Mazda', 'Soul Red, Deep Blue, White, Machine Grey', 2, 699000000),
+(4, 'Mazda 3 Sport Premium 2021', 'Mazda ', 'Ghi xám', 4, 799000000);
 
 -- --------------------------------------------------------
 
@@ -241,7 +244,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chitieu`
 --
 ALTER TABLE `chitieu`
-  MODIFY `MaCT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `MaCT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `doanhthu`
@@ -253,7 +256,7 @@ ALTER TABLE `doanhthu`
 -- AUTO_INCREMENT for table `hangton`
 --
 ALTER TABLE `hangton`
-  MODIFY `MaHT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `MaHT` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `hoadon`
@@ -271,7 +274,7 @@ ALTER TABLE `khachhang`
 -- AUTO_INCREMENT for table `sanpham`
 --
 ALTER TABLE `sanpham`
-  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `MaSP` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

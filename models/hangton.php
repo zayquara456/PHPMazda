@@ -62,21 +62,6 @@ class Storage extends Model
 
         return $products;
     }
-    public function insert() {
-        $sql_insert =
-          "INSERT INTO `hangton`(`MaSP`,`SoLuongTon`)
-            VALUES (:masp, :soluongton)";
-        //cbi đối tượng truy vấn
-        $obj_insert = $this->connection
-          ->prepare($sql_insert);
-        //gán giá trị thật cho các placeholder
-        $arr_insert = [
-          ':masp' => $this->masp,
-          ':soluongton' => $this->soluongton,
-        ];
-        return $obj_insert->execute($arr_insert);
-      
-    }
 
     /**
      * Lấy thông tin sản phẩm theo id

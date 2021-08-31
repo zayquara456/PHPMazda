@@ -3,9 +3,6 @@ require_once 'helpers/Helper.php';
 ?>
 
 <h1>Danh sách hàng tồn</h1>
-    <a href="index.php?controller=hangton&action=create" class="btn btn-success">
-        <i class="fa fa-plus"></i> Thêm mới
-    </a>
 <table class="table table-bordered">
     <tr>
         <th>Mã hàng tồn</th>

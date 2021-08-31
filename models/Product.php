@@ -19,7 +19,7 @@ class Product extends Model
     {
         parent::__construct();
         if (isset($_GET['title']) && !empty($_GET['title'])) {
-            $this->str_search .= " AND sanpham.tensp LIKE '%{$_GET['title']}%'";
+            $this->str_search .= " AND c.TenSP LIKE '%{$_GET['title']}%'";
         }
     }
 
@@ -30,8 +30,8 @@ class Product extends Model
     public function getAll()
     {
         $obj_select = $this->connection
-            ->prepare("SELECT sanpham.* FROM sanpham 
-                        WHERE TRUE $this->str_search
+            ->prepare("SELECT c.*, r.SoLuongTon SoLuong FROM sanpham c inner join hangton r on r.MaSP = c.MaSP
+			WHERE TRUE $this->str_search
                         ");
 
         $arr_select = [];
@@ -52,10 +52,8 @@ class Product extends Model
         $page = $arr_params['page'];
         $start = ($page - 1) * $limit;
         $obj_select = $this->connection
-            ->prepare("	select  c.*, r.SoLuongTon SoLuong from sanpham c inner join hangton r on r.MaSP = c.MaSP
-                        WHERE TRUE $this->str_search
-                        LIMIT $start, $limit
-                        ");
+            ->prepare("SELECT c.*, r.SoLuongTon SoLuong FROM sanpham c inner join hangton r on r.MaSP = c.MaSP
+			WHERE TRUE $this->str_search LIMIT $start, $limit");
 
         $arr_select = [];
         $obj_select->execute($arr_select);
@@ -84,7 +82,9 @@ class Product extends Model
     {
         $obj_insert = $this->connection
             ->prepare("INSERT INTO `sanpham`( `TenSP`, `Hang`, `MauHienCo`, `SoGhe`, `GiaTien`) 
-                                VALUES (:tensp, :hang, :mau, :soghe, :giatien)");
+                                VALUES (:tensp, :hang, :mau, :soghe, :giatien);
+						INSERT INTO `hangton`(`MaSP`, `SoLuongTon`) VALUES ((SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES
+     WHERE TABLE_SCHEMA = 'project_cc' AND TABLE_NAME = 'sanpham'),'0')");
         $arr_insert = [
             ':tensp' => $this->tensp,
             ':hang' => $this->hang,

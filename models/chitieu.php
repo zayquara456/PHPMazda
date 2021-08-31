@@ -67,7 +67,7 @@ class Pay extends Model
         $obj_insert = $this->connection
             ->prepare("INSERT INTO `chitieu`( `MaSP`, `GiaTienNhap`, `SoLuongNhap`, `NguoiNhap`) 
                         VALUES (:masp, :giatiennhap, :soluongnhap, :nguoinhap);
-                       UPDATE `hangton` SET `SoLuongTon`=`SoLuongTon`+ :soluongnhap WHERE `MaSP`=:masp");
+                       UPDATE `hangton` SET `SoLuongTon` = `SoLuongTon` + :soluongnhap WHERE `MaSP`=:masp");
         $arr_insert = [
             ':masp' => $this->masp,
             ':giatiennhap' => $this->giatiennhap,
