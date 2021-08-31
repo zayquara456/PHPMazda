@@ -20,7 +20,7 @@
                class="form-control" id="title"/>
     </div> -->
     <div class="form-group">
-       <label for="soluongnhap">Số lượng nhập mới</label>
+       <label for="soluongnhap">Số lượng nhập</label>
         <input type="number" name="soluongnhap"
                value="<?php echo isset($_POST['SoLuongNhap']) ? $_POST['SoLuongNhap'] : $pay['SoLuongNhap'] ?>"
                class="form-control" id="title"/>
