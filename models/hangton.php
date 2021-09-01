@@ -76,11 +76,14 @@ class Storage extends Model
         $obj_select->execute();
         return $obj_select->fetch(PDO::FETCH_ASSOC);
     }
-    /**
-     * Lấy thông tin tổng vốn kho hàng
-     * @param $vontonkho
-     * @return mixed
-     */
+	 public function getByIdofproduct($id)
+    {
+        $obj_select = $this->connection
+            ->prepare("SELECT * FROM `hangton` WHERE `MaSP` = $id");
+
+        $obj_select->execute();
+        return $obj_select->fetch(PDO::FETCH_ASSOC);
+    }
     public function getTongVon()
     {
         $obj_select = $this->connection
